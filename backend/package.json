@@ -1,0 +1,97 @@
+{
+  "name": "fabric-express-boilerplate",
+  "version": "5.0.0",
+  "description": "A Boilerplate application for building REST APIs using express, mongoose in ES6 with code coverage and Fabric",
+  "author": "Maurice Dalderup <Maurice_Dalderup@hotmail.com>",
+  "main": "index.js",
+  "private": false,
+  "engines": {
+    "node": ">=8.12.0",
+    "npm": ">=6.4.0",
+    "yarn": ">=1.10.0"
+  },
+  "scripts": {
+    "start": "cross-env NODE_ENV=development nodemon --exec babel-node -- ./server/index.js",
+    "start:prod": "cross-env NODE_ENV=PRODUCTION && babel-node ./dist/server/index.js",
+    "start:debug": "cross-env DEBUG=hlf-express:* yarn start",
+    "prestart": "rm -rf .hfc-key-store",
+    "build": "rm -rf dist && babel server -d dist/server && babel config -d dist/config",
+    "lint": "esw --ext .js server config --color",
+    "lint:watch": "yarn lint --watch",
+    "precommit": "lint-staged",
+    "test": "cross-env NODE_ENV=test jest --colors",
+    "test:watch": "yarn test --watchAll",
+    "test:coverage": "yarn test --coverage",
+    "report-coverage": "coveralls < ./coverage/lcov.info"
+  },
+  "dependencies": {
+    "bcrypt": "3.0.1",
+    "bluebird": "3.5.2",
+    "body-parser": "1.18.3",
+    "compression": "1.7.3",
+    "cookie-parser": "1.4.3",
+    "cors": "2.8.4",
+    "debug": "4.0.1",
+    "dotenv": "6.0.0",
+    "express": "4.16.3",
+    "express-jwt": "5.3.1",
+    "express-queue": "0.0.12",
+    "express-validation": "1.0.2",
+    "express-winston": "3.0.0",
+    "fabric-ca-client": "1.4.0",
+    "fabric-client": "1.4.0",
+    "helmet": "3.13.0",
+    "http-status": "1.2.0",
+    "joi": "13.6.0",
+    "jsonwebtoken": "8.3.0",
+    "lodash": "4.17.11",
+    "method-override": "3.0.0",
+    "mongoose": "5.2.18",
+    "morgan": "1.9.1",
+    "winston": "3.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.1.0",
+    "@babel/core": "7.1.0",
+    "@babel/node": "7.0.0",
+    "@babel/plugin-proposal-class-properties": "7.1.0",
+    "@babel/plugin-proposal-optional-chaining": "7.0.0",
+    "@babel/preset-env": "7.1.0",
+    "babel-eslint": "10.0.1",
+    "babel-jest": "23.6.0",
+    "chai": "4.2.0",
+    "commitizen": "2.10.1",
+    "coveralls": "3.0.2",
+    "cross-env": "5.2.0",
+    "cz-conventional-changelog": "2.1.0",
+    "eslint": "5.6.0",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-config-prettier": "3.1.0",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-node": "7.0.1",
+    "eslint-plugin-prettier": "2.7.0",
+    "eslint-watch": "4.0.2",
+    "husky": "1.0.1",
+    "istanbul": "0.4.5",
+    "jest": "23.6.0",
+    "lint-staged": "7.3.0",
+    "mocha": "5.2.0",
+    "nodemon": "1.18.4",
+    "prettier": "1.14.3",
+    "supertest": "3.3.0",
+    "supertest-as-promised": "4.0.2",
+    "validate-commit-msg": "2.14.0"
+  },
+  "license": "MIT",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css}": [
+      "yarn lint",
+      "git add ."
+    ]
+  }
+}

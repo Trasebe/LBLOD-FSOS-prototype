@@ -1,0 +1,78 @@
+{
+  "name": "react-stack-boilerplate",
+  "version": "1.0.6",
+  "description": "This creates a project boilerplate for React with a custom stack",
+  "scripts": {
+    "build": "parcel build src/index.html",
+    "precommit": "yarn lint",
+    "lint": "eslint 'src/**/*.js*' --fix",
+    "start": "parcel src/index.html --no-cache",
+    "test": "jest --all --verbose --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test:local": "jest --all --verbose --coverage"
+  },
+  "author": "Maurice Dalderup",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "antd": "3.7.3",
+    "axios": "0.18.0",
+    "babel-polyfill": "6.26.0",
+    "elliptic": "^6.4.1",
+    "jsrsasign": "^8.0.12",
+    "lodash": "^4.17.11",
+    "prop-types": "15.6.2",
+    "react": "16.4.1",
+    "react-dom": "16.4.1",
+    "react-router": "4.3.1",
+    "react-router-dom": "4.3.1",
+    "sha.js": "^2.4.11",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "8.2.5",
+    "babel-plugin-transform-class-properties": "6.24.1",
+    "babel-plugin-transform-function-bind": "6.22.0",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
+    "babel-preset-env": "1.7.0",
+    "babel-preset-react": "6.24.1",
+    "coveralls": "3.0.2",
+    "enzyme": "3.3.0",
+    "enzyme-adapter-react-16": "1.1.1",
+    "enzyme-to-json": "3.3.4",
+    "eslint": "5.0.1",
+    "eslint-config-airbnb": "17.0.0",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-plugin-import": "2.13.0",
+    "eslint-plugin-jsx-a11y": "6.1.0",
+    "eslint-plugin-prettier": "2.6.1",
+    "eslint-plugin-react": "7.10.0",
+    "husky": "0.14.3",
+    "jest": "23.3.0",
+    "parcel-bundler": "1.10.3",
+    "prettier": "1.13.7",
+    "raf": "3.4.0",
+    "react-test-renderer": "16.4.1"
+  },
+  "jest": {
+    "setupFiles": [
+      "./jest.setup.js"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}",
+      "!src/index.jsx",
+      "!src/__helpers__/TestPropTypes.helper.js",
+      "!**/node_modules/**"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(jpg|jpeg|png|gif|svg)$": "<rootDir>/src/__mocks__/file.mock.js"
+    },
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}
